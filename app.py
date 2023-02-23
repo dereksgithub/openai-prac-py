@@ -58,8 +58,10 @@ txt.insert('1.0', 'Aks me anything:')
 scrollbar = tk.Scrollbar(txt)
 scrollbar.place(relheight=1, relx=1.01)
 
-
-entry = tk.Entry(window, bg="#2C3E50", fg=TEXT_COLOR, font=FONT, width=80)
+# entry text-box
+entry = tk.Entry(window, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=100)
+entry.configure(bg=BG_COLOR, insertbackground=TEXT_COLOR, insertwidth=5)
+# this function to adjust cursor location is not effective,entry.icursor(entry.index(tk.END)+555)
 # height=215, width=200)
 entry.grid(row=2, columnspan=2, padx=10, pady=20, ipady=3)
 
@@ -73,30 +75,28 @@ end-1c is divided in 2 parts:
 It deletes the last character to remove that last \n so your e-mail doesn't end with an extra line.
 """
 # add a submit button
-def clicked():
+def clicked(event):
     # At the start of each conversation
 
     send = "Q -> " + entry.get()
     txt.insert(tk.END, "\n" + send)
     user = entry.get().lower()
+    print(user)
     txt.insert(tk.END, "\n" + "A -> " + askGPT(user)[2:] + "\n")
     entry.delete(0, tk.END)
 
-    # if (user == "hello"):
-    #     txt.insert(tk.END, "\n" + "Bot -> Hi there, how can I help?")
-    #
-    # else:
-    #     txt.insert(tk.END, "\n" + "Bot -> Sorry! I didn't understand that")
-    # Scroll down to bottom
     txt.see(tk.END)
     # end chat
     entry.delete(0, tk.END)
 
-# Another problem is that the UI does not fit to the resizing of the application box:
-
-
 # Create the button
 #sendbtn = tk.Button(window, text="Send", font=FONT_BOLD, bg=BG_GRAY, command=clicked).grid(row=3, column=0)
+#sendbtn = tk.Button(window, text="Send", font=FONT_BOLD, bg=BG_GRAY)
+sendbtn = tk.Button(window, text="Send", font=FONT_BOLD, bg=BG_GRAY)
+sendbtn.bind("<Button-1>", clicked)
+
+# place the send button
+sendbtn.grid(row=3, column=0)
 
 # bind a shortcut quit key:
 def quit(event):
@@ -107,7 +107,7 @@ def quit(event):
 window.bind('<Control-q>', quit)
 
 # bind the send button with with ctrl + enter:
-window.bind('<Control-Return>', lambda event:clicked())
+window.bind('<Control-Return>', clicked)
 # add another button, clear screen:
 
 #btn.pack()

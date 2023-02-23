@@ -7,3 +7,5 @@ I've coded with tkinter for practicing purposes, will follow up with a flask pro
 Will complete the first tkinter one to have a chat-box like function and then image display for dall.e compatibility.
 
 After that, I'll transfer these functions to a web-like application.
+
+Binded the keys, mostly done with tkinter, starting the webapp with flsk
