@@ -12,8 +12,8 @@ with open(r"D:\aAPIkeys\openai.txt", 'r') as f:
 openai.Model.list()
 # Set theme for the GUI
 BG_GRAY = "#ABB2B9"
-BG_COLOR = "#17202A"
-TEXT_COLOR = "#EAECEE"
+BG_COLOR = "#0c0c0d"
+TEXT_COLOR = "#28fa19"
 FONT = "Helvetica 14"
 FONT_BOLD = "Helvetica 13 bold"
 
