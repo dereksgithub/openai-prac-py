@@ -48,13 +48,13 @@ window.title("ChatGPT GUI")
 #label.pack()
 lable1 = tk.Label(window, bg=BG_COLOR, fg=TEXT_COLOR, text="Welcome to ChatGPT", font=FONT_BOLD, pady=10, width=20,
                   height=1).grid(row=0, columnspan=2)
-# add an entry box
-#entry = tkinter.Entry(window)
+
+# add the main interfacing text box
 txt = tk.Text(window, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=130, height= 32)
 txt.grid(row=1, column=0, columnspan=2)
 txt.insert('1.0', 'Aks me anything:')
 
-#
+# for scrolling (auto)
 scrollbar = tk.Scrollbar(txt)
 scrollbar.place(relheight=1, relx=1.01)
 
@@ -96,12 +96,18 @@ def clicked():
 
 
 # Create the button
-send_btn = tk.Button(window, text="Send", font=FONT_BOLD, bg=BG_GRAY, command=clicked).grid(row=3, column=0)
+#sendbtn = tk.Button(window, text="Send", font=FONT_BOLD, bg=BG_GRAY, command=clicked).grid(row=3, column=0)
+
+# bind a shortcut quit key:
+def quit(event):
+    print("you pressed control-q")
+    window.quit()
 
 # bind the send button with with ctrl + enter:
+window.bind('<Control-q>', quit)
 
-
-
+# bind the send button with with ctrl + enter:
+window.bind('<Control-Return>', lambda event:clicked())
 # add another button, clear screen:
 
 #btn.pack()
