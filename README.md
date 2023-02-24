@@ -8,4 +8,6 @@ Will complete the first tkinter one to have a chat-box like function and then im
 
 After that, I'll transfer these functions to a web-like application.
 
-Binded the keys, mostly done with tkinter, starting the webapp with flsk
+Need to format the app.py in oop style. Basic functions are there. Need to add a dalle option in tkinter, just for 
+practice. 
+

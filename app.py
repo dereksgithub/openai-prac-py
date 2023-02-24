@@ -3,8 +3,8 @@ import openai
 from flask import Flask, redirect, render_template, request, url_for, app
 
 import tkinter as tk
-
-with open(r"D:\aAPIkeys\openai.txt", 'r') as f:
+import askgpt as asklegpt
+with open(r"D:\aAPIkeys\openaiprivate.txt", 'r') as f:
     openai.api_key = f.readline()
     f.close()
 # print(openai.api_key)
@@ -19,19 +19,7 @@ FONT_BOLD = "Helvetica 13 bold"
 
 #image_resp = openai.Image.create(prompt="two dogs playing chess, oil painting", n=4, size="512x512")
 #gpt_prompt = "Say this is a test"
-# function to ask gpt
-def askGPT(gpt_prompt):
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=gpt_prompt,
-        temperature=0.7,
-        max_tokens=1200,
-        top_p=1,
-        frequency_penalty= 0.0,
-        presence_penalty= 0.0
-        #stop=["\n"]
-    )
-    return(response['choices'][0]['text'])
+
 
 
 # create the window
@@ -82,7 +70,7 @@ def clicked(event):
     txt.insert(tk.END, "\n" + send)
     user = entry.get().lower()
     print(user)
-    txt.insert(tk.END, "\n" + "A -> " + askGPT(user)[2:] + "\n")
+    txt.insert(tk.END, "\n" + "A -> " + asklegpt.askGPT(user)[2:] + "\n")
     entry.delete(0, tk.END)
 
     txt.see(tk.END)
