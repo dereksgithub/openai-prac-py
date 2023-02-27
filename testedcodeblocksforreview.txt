@@ -110,6 +110,10 @@ Names:
 # set the window title
 # window.title("ChatGPT GUI")
 
+# user input get
+user = self.master.entry.get().lower()
+
+
 # add a label
 # lable1 = tk.Label(window, bg=BG_COLOR, fg=TEXT_COLOR, text="Welcome to ChatGPT", font=FONT_BOLD, pady=10, width=20,
 #                   height=1).grid(row=0, columnspan=2)
