@@ -64,7 +64,8 @@ class ChatBotHomePage:
         # bind left mouse click
         self.master.sendmadbtn.bind("<Button-1>", self.madclicked)
         self.master.sendmadbtn.grid(row=3, column=1)
-
+        # bind the send button with ctrl + m:
+        self.master.bind('<Control-m>', self.madclicked)
 
         # bind a shortcut quit key:
         def quitchat(event):
@@ -92,7 +93,7 @@ class ChatBotHomePage:
         self.master.txt.insert(tk.END, "\n" + "A -> " + gptanswertext + "\n")
 
         # store our q and a locally
-        with open(r"D:\gptQandA.txt", 'a') as f1:
+        with open(r"D:\gptQandA.txt", 'a', encoding="utf-8") as f1:
             # write the question and answer into our txt file
             f1.write("\n" + "Q: " + user + "\n")
             f1.write("A: " + gptanswertext + "\n")
@@ -110,7 +111,7 @@ class ChatBotHomePage:
 
         Returns: no return for this function
         """
-        send = "Q -> " + self.master.entry.get()
+        send = "Q-mad -> " + self.master.entry.get()
         self.master.txt.insert(tk.END, "\n" + send)
         user = self.master.entry.get().lower()
 
@@ -118,13 +119,13 @@ class ChatBotHomePage:
         madgptanswertext = asklegpt.askGPT(madmode + user)[2:]
 
         # insert the reply to the textbox
-        self.master.txt.insert(tk.END, "\n" + "A -> " + madgptanswertext + "\n")
+        self.master.txt.insert(tk.END, "\n" + "A-mad -> " + madgptanswertext + "\n")
 
         # store our q and a locally
-        with open(r"D:\gptQandA.txt", 'a') as f1:
+        with open(r"D:\gptQandA.txt", 'a', encoding="utf-8") as f1:
             # write the question and answer into our txt file
-            f1.write("\n" + "Q: " + user + "\n")
-            f1.write("A: " + gptanswertext + "\n")
+            f1.write("\n" + "Q-mad: " + user + "\n")
+            f1.write("A-mad: " + madgptanswertext + "\n")
             f1.close()
 
         # clear entry:
