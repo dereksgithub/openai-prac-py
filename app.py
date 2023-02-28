@@ -38,7 +38,7 @@ class ChatBotHomePage:
                  width=30, height=1).grid(row=0, columnspan=2)
 
         # define the main textbox:
-        self.master.txt = tk.Text(master, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=130, height=32)
+        self.master.txt = tk.Text(master, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=130, height=20)
         self.master.txt.grid(row=1, column=0, columnspan=2)
         self.master.txt.insert('1.0', 'Aks me anything:')
 

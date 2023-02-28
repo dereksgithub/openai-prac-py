@@ -20,7 +20,7 @@ def askdalle(prompt):
     response = openai.Image.create(
         prompt=prompt,
         n=1,
-        size="256x256"
+        size="1024x1024"
     )
 
     dalleurl = response['data'][0]['url']
